@@ -1,0 +1,9 @@
+{{#if on.workflow_call.inputs}}
+### Inputs
+
+| Input | Required |  Type  | Default | Description |
+| :---: | :------: | :----: | :------ | :---------- |
+{{#EachSorted on.workflow_call.inputs}}
+| <pre>{{@key}}</pre> | {{#if this.required}}☑️{{else if this.maybeRequired}}🤔{{else}}-{{/if}} | `{{this.type}}` | {{#if (isDefined this.default)}}<pre>{{ReplaceNewLines this.default true }}</pre>{{/if}} | {{ReplaceNewLines this.description false}} |
+{{/EachSorted}}
+{{/if}}

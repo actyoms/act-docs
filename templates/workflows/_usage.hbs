@@ -1,0 +1,23 @@
+```yaml
+#jobs:
+# job-name:
+    uses: xivart/actions/.github/workflows/{{basename}}@{{version}}
+{{#if permissions}}
+    permissions:
+    {{#EachSorted permissions}}
+        {{@key}}: {{this}}
+    {{/EachSorted}}
+{{/if}}
+{{#if on.workflow_call.secrets}}
+    secrets: {{#if inheritedSecrets}}# secrets: inherit{{/if}}
+    {{#EachSorted on.workflow_call.secrets}}
+        {{@key}}: $\{{ secrets.someSecret }}{{#if this.required}} # required{{else if this.maybeRequired}} # maybe-required{{/if}}
+    {{/EachSorted}}
+{{/if}}
+{{#if on.workflow_call.inputs}}
+    with:
+    {{#EachSorted on.workflow_call.inputs}}
+        {{@key}}: {{#if this.example}}{{HandleNewLines this.example 8 false true}}{{else}}{{#if (isDefined this.default)}}{{HandleNewLines this.default 8 false true}}{{else}}''{{/if}}{{/if}}{{#if this.required}} # required{{else if this.maybeRequired}} # maybe-required{{/if}}
+    {{/EachSorted}}
+{{/if}}
+```

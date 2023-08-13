@@ -1,0 +1,54 @@
+{
+  "name": "actions-docs",
+  "version": "0.0.1",
+  "description": "`actions-docs` tool designed to automate the process of generating detailed and standardized README files for GitHub Actions and Workflows.",
+  "main": "./dist/main.js",
+  "bin": {
+    "actions-docs": "./dist/main.js"
+  },
+  "type": "module",
+  "scripts": {
+    "all": "npm run clean && npm run lint -- --fix && npm run format && npm run build && chmod +x ./dist/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "ts-node --esm ./src/main.ts",
+    "format": "prettier --write '**/*.{ts,js,cjs,json}'",
+    "lint": "eslint '**/*.ts' --cache",
+    "copy:templates": "cp -r templates ./dist/templates",
+    "clean": "rm -rf ./dist",
+    "build": "tsc -p tsconfig.json && npm run copy:templates"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/actyoms/actions-docs.git"
+  },
+  "keywords": [
+    "actions",
+    "docs"
+  ],
+  "author": "actyoms",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/actyoms/actions-docs/issues"
+  },
+  "homepage": "https://github.com/actyoms/actions-docs#readme",
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "@types/yargs": "^17.0.24",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "@vercel/ncc": "^0.36.1",
+    "chalk": "^5.3.0",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "handlebars": "^4.7.7",
+    "prettier": "^3.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6",
+    "yaml": "^2.3.1",
+    "yargs": "^17.7.2"
+  }
+}
