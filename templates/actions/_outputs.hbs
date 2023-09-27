@@ -1,0 +1,10 @@
+{{#if outputs}}
+### Outputs
+| Output | Usage | Description |
+| :----: | :---: | :---------- |
+{{#EachSorted outputs}}
+| `{{@key}}` | <pre>$\{{ steps.[step_id].outputs.{{@key}} }}</pre> | {{ReplaceNewLines this.description true}} |
+{{/EachSorted}}
+
+** `[step_id]` is considered the id of step in actual job. Replace `[step_id]` with actual id of step if it is set different. **
+{{/if}}

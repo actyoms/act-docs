@@ -1,0 +1,9 @@
+{{#if inputs}}
+### Inputs
+| Input | required | default | description |
+| :-----: | :--------: | :-------: | :----------- |
+{{#EachSorted inputs}}
+| <pre>{{@key}}</pre> | {{#if this.required}}☑️{{else}}-{{/if}} | {{#if (and (isDefined this.default) (not (emptyString this.default)))}}<pre>{{ReplaceNewLines this.default false}}</pre>{{else if (and (isDefined this.default) (emptyString this.default))}}`''`{{else}}-{{/if}} | {{ReplaceNewLines this.description false}} |
+{{/EachSorted}}
+{{/if}}
+

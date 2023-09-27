@@ -1,0 +1,12 @@
+## Usage
+
+```yaml
+  - id: {{id}}
+    uses: xivart/actions/actions/{{id}}@{{version}}
+{{#if inputs}}
+    with:
+{{#EachSorted inputs}}
+      {{@key}}: {{#if this.example }}{{HandleNewLines this.example 12 true }}{{else if (and (isDefined this.default) (not (emptyString this.default)))}}{{HandleNewLines this.default 12 true }}{{else if (and (isDefined this.default) (emptyString this.default))}}''{{/if}}{{#if this.required}} # required{{/if}}
+{{/EachSorted}}
+{{/if}}
+```

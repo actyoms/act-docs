@@ -1,0 +1,11 @@
+{{#if permissions}}
+## Permissions
+> ⚠️ This workflow requires [permissions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions).
+Minimum permissions required to run this workflow are listed below.
+
+|  Permission  |  Required Level |
+| :----------: | :------------:  |
+{{#EachSorted permissions}}
+| `{{@key}}` | `{{this}}` |
+{{/EachSorted}}
+{{/if}}

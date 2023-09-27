@@ -1,0 +1,5 @@
+*.json
+coverage/
+dist/
+templates/
+node_modules/

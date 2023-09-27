@@ -1,0 +1,9 @@
+{{#if on.workflow_call.outputs}}
+### Outputs
+
+| Output | Usage | Description |
+| :----: | :---: | :---------- |
+{{#EachSorted on.workflow_call.outputs}}
+| `{{@key}}` | <pre>$\{{ needs.{{../id}}.outputs.{{@key}} }}</pre> | {{ReplaceNewLines this.description true}} |
+{{/EachSorted}}
+{{/if}}

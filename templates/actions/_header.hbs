@@ -1,0 +1,5 @@
+# {{name}}
+{{#if description}}
+{{description}} **`type: {{#if (eq runs.using "composite")}}composite{{else if (eq runs.using "docker")}}docker{{else}}javascript{{/if}}{{#if (len inputs)}}, inputs: {{len inputs}}{{/if}}{{#if (len outputs)}}, outputs: {{len outputs}}{{/if}}`**
+{{/if}}
+
