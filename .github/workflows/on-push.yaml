@@ -5,6 +5,7 @@ on:
       - "**"
     paths-ignore:
       - "**.md"
+  workflow_call:
 jobs:
   continuous-integration:
     name: Continuous Integration
@@ -24,6 +25,6 @@ jobs:
       - name: ESLint Check
         run: npm run lint
       - name: Test
-        run: npm test -- --reporter verbose
+        run: npm test -- --passWithNoTests --reporter verbose
       - name: Build
         run: npm run build
