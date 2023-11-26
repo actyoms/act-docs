@@ -10,11 +10,6 @@ on:
         required: false
         default: 'actyoms'
         type: string
-      npm_token:
-        description: 'The npm token to use for publishing'
-        required: false
-        default: ${{ secrets.NPM_TOKEN }}
-        type: string
   workflow_dispatch:
 
 jobs:
@@ -39,6 +34,6 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: npm auth
-        run: echo "//registry.npmjs.org/:_authToken=${{ github.event.inputs.npm_token }}" > ~/.npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
       - name: Publish
         run: npm publish --access public
