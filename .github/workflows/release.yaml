@@ -57,13 +57,8 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           # Create a tag for the release
-          git tag -a ${{ steps.outputs.outputs.tag }} -m "Release ${{ steps.outputs.outputs.version }}" --allow-empty
+          git tag -a ${{ steps.outputs.outputs.tag }} -m "Release ${{ steps.outputs.outputs.version }}"
           git push origin ${{ steps.outputs.outputs.tag }}
-          # Unset release only changes
-          git diff HEAD ${{ github.ref }} | git apply 
-          git add --all
-          git commit -m "Unset release only changes [skip ci]"
-          git push origin HEAD:${{ github.ref }}
       - name: Create Release
         uses: actions/create-release@v1
         with:
