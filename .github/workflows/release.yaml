@@ -20,7 +20,7 @@ jobs:
     uses: ./.github/workflows/on-push.yaml
     secrets: inherit
   release:
-    name: Semantic Version
+    name: Release
     needs: continuous-integration
     runs-on: ubuntu-latest
     permissions:
@@ -56,9 +56,6 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add --all
-          git commit -m "Set version to ${{ steps.outputs.outputs.version }} [skip ci]"
-          git push origin HEAD:${{ github.ref }}
           # Create a tag for the release
           git tag -a ${{ steps.outputs.outputs.tag }} -m "Release ${{ steps.outputs.outputs.version }}"
           git push origin ${{ steps.outputs.outputs.tag }}
