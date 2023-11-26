@@ -57,7 +57,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           # Create a tag for the release
-          git tag -a ${{ steps.outputs.outputs.tag }} -m "Release ${{ steps.outputs.outputs.version }}"
+          git tag -a ${{ steps.outputs.outputs.tag }} -m "Release ${{ steps.outputs.outputs.version }}" --allow-empty
           git push origin ${{ steps.outputs.outputs.tag }}
           # Unset release only changes
           git diff HEAD ${{ github.ref }} | git apply 
