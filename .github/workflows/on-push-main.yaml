@@ -3,6 +3,18 @@ on:
   push:
     branches:
       - main
+  workflow_call:
+    inputs:
+      org_name:
+        description: 'The name of the npm organization to publish to'
+        required: false
+        default: 'actyoms'
+        type: string
+      npm_token:
+        description: 'The npm token to use for publishing'
+        required: false
+        default: ${{ secrets.NPM_TOKEN }}
+        type: string
   workflow_dispatch:
 
 jobs:
@@ -22,9 +34,11 @@ jobs:
         with:
           node-version: 20.x
           cache: 'npm'
+      - name: npm init
+        run: npm init --scope=@${{ github.event.inputs.org_name }} --yes
       - name: Install dependencies
         run: npm install
       - name: npm auth
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ github.event.inputs.npm_token }}" > ~/.npmrc
       - name: Publish
         run: npm publish --access public
