@@ -12,7 +12,7 @@ import { getWorkflowFiles, isWorkflow, parseWorkflow, Workflow } from "./models/
 
 const cwd = process.cwd();
 const yargsActionOptions = {
-    actionRoot: { string: true, description: "actions directory path", default: resolve(cwd)},
+    actionRoot: { string: true, description: "actions directory path", default: resolve(cwd) },
     templateRoot: { string: true, description: "the template path", default: "" },
     readmeOut: { string: true, description: "the readme output path", default: "" }
 };
@@ -63,9 +63,9 @@ const workflowHandler = async (argv: Arguments): Promise<void> => {
 };
 
 yargs(process.argv.slice(2))
-    .scriptName("actions-docs")
-    .example("actions-docs generate action", "Generate action documentation")
-    .example("actions-docs generate workflow", "Generate workflow documentation")
+    .scriptName("act-docs")
+    .example("act-docs generate action", "Generate action documentation")
+    .example("act-docs generate workflow", "Generate workflow documentation")
     .command("generate <type>", "Generate documentation for actions or workflows", (yargs: Argv) => {
         yargs.example("action-docs generate action", "Generate action documentation");
         yargs.example("action-docs generate workflow", "Generate workflow documentation");

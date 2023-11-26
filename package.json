@@ -1,10 +1,10 @@
 {
-  "name": "actions-docs",
+  "name": "act-docs",
   "version": "0.0.1",
-  "description": "`actions-docs` tool designed to automate the process of generating detailed and standardized README files for GitHub Actions and Workflows.",
+  "description": "`act-docs` tool designed to automate the process of generating detailed and standardized README files for GitHub Actions and Workflows.",
   "main": "./dist/main.js",
   "bin": {
-    "actions-docs": "./dist/main.js"
+    "act-docs": "./dist/main.js"
   },
   "type": "module",
   "scripts": {
@@ -12,6 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "ts-node --esm ./src/main.ts",
     "format": "prettier --write '**/*.{ts,js,cjs,json}'",
+    "format-check": "prettier --check '**/*.{ts,js,cjs,json}'",
     "lint": "eslint '**/*.ts' --cache",
     "copy:templates": "cp -r templates ./dist/templates",
     "clean": "rm -rf ./dist",
@@ -19,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/actyoms/actions-docs.git"
+    "url": "git+ssh://git@github.com/actyoms/act-docs.git"
   },
   "keywords": [
     "actions",
@@ -28,9 +29,9 @@
   "author": "actyoms",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/actyoms/actions-docs/issues"
+    "url": "https://github.com/actyoms/act-docs/issues"
   },
-  "homepage": "https://github.com/actyoms/actions-docs#readme",
+  "homepage": "https://github.com/actyoms/act-docs#readme",
   "devDependencies": {
     "@types/node": "^20.4.5",
     "@types/yargs": "^17.0.24",

@@ -1,27 +1,27 @@
-# actions-docs
-`actions-docs` tool designed to automate the process of generating detailed and standardized README files for GitHub Actions and Workflows.
+# act-docs
+`act-docs` tool designed to automate the process of generating detailed and standardized README files for GitHub Actions and Workflows.
 
 ## Usage
 
 ```bash
-actions-docs <command>
+act-docs <command>
 
 Commands:
-  actions-docs generate <type>  Generate documentation for actions or workflows
+  act-docs generate <type>  Generate documentation for actions or workflows
 
 Options:
   --help     Show help                                                 [boolean]
   --version  Show version number                                       [boolean]
 
 Examples:
-  actions-docs generate action    Generate action documentation
-  actions-docs generate workflow  Generate workflow documentation
+  act-docs generate action    Generate action documentation
+  act-docs generate workflow  Generate workflow documentation
 ```
 
 ### Generate Action Documentation
 
 ```bash
-actions-docs generate action
+act-docs generate action
 
 Generate action documentation
 
@@ -37,7 +37,7 @@ Options:
 ### Generate Workflow Documentation
 
 ```bash
-actions-docs generate workflow
+act-docs generate workflow
 
 Generate workflow documentation
 
@@ -45,8 +45,7 @@ Options:
   --help          Show help                                            [boolean]
   --version       Show version number                                  [boolean]
   --workflowRoot  workflows directory path
-  [string] [default: "/Users/malsharbaji/Travix/Projects/Tooling/Github/actyoms/
-                                           actions-docs-test/.github/workflows"]
+  [string] [default: "cwd"]
   --templateRoot  the template path                       [string] [default: ""]
   --readmeOut     the readme output path                  [string] [default: ""]
 ```
@@ -62,8 +61,8 @@ You can override the default templates by providing the `--templateRoot` option.
 ### Install
 
 ```bash
-npm install -g actions-docs # install globally
-npm install --save-dev actions-docs # install as dev dependency
+npm install -g act-docs # install globally
+npm install --save-dev act-docs # install as dev dependency
 ```
 
 ### Configure
@@ -73,8 +72,8 @@ Add the following to your `package.json` file:
 ```json
 {
   "scripts": {
-    "docs:action": "actions-docs generate action",
-    "docs:workflow": "actions-docs generate workflow"
+    "docs:action": "act-docs generate action",
+    "docs:workflow": "act-docs generate workflow"
   }
 }
 ```
