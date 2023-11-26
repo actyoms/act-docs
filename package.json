@@ -6,6 +6,39 @@
   "bin": {
     "act-docs": "./dist/main.js"
   },
+  "release": {
+    "branches": [
+      "main",
+      "next"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "dist/main.js",
+              "label": "act-docs"
+            }
+          ]
+        }
+      ]
+    ]
+  },
   "type": "module",
   "scripts": {
     "all": "npm run clean && npm run lint -- --fix && npm run format && npm run build && chmod +x ./dist/main.js",
@@ -16,7 +49,8 @@
     "lint": "eslint '**/*.ts' --cache",
     "copy:templates": "cp -r templates ./dist/templates",
     "clean": "rm -rf ./dist",
-    "build": "tsc -p tsconfig.json && npm run copy:templates"
+    "build": "tsc -p tsconfig.json && npm run copy:templates",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -33,6 +67,8 @@
   },
   "homepage": "https://github.com/actyoms/act-docs#readme",
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/node": "^20.4.5",
     "@types/yargs": "^17.0.24",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
@@ -48,6 +84,7 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "handlebars": "^4.7.7",
     "prettier": "^3.0.0",
+    "semantic-release": "^22.0.8",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
     "yaml": "^2.3.1",
