@@ -60,12 +60,11 @@ jobs:
           git tag -a ${{ steps.outputs.outputs.tag }} -m "Release ${{ steps.outputs.outputs.version }}"
           git push origin ${{ steps.outputs.outputs.tag }}
       - name: Create Release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.outputs.outputs.tag }}
-          release_name: ${{ steps.outputs.outputs.version }}
-          body: ${{ steps.outputs.outputs.release_notes }}
-          draft: false
+          body_path: ${{ steps.release-notes.outputs.path }}
+          generate_release_notes: true
           prerelease: false
       - name: Npm Publish
         run: npm publish --access public --provenance
