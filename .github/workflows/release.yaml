@@ -67,6 +67,4 @@ jobs:
           generate_release_notes: true
           prerelease: false
       - name: Npm Publish
-        run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
