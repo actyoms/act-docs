@@ -67,4 +67,4 @@ jobs:
           generate_release_notes: true
           prerelease: false
       - name: Npm Publish
-        run: npm publish --access public
+        run: npm publish --access public --scope=@${{ github.event.inputs.org_name }}
